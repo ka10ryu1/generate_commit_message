@@ -1,0 +1,2 @@
+# generate_commit_message
+ChatGPT（Web）を使ってコミットメッセージを自動生成する
