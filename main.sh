@@ -14,4 +14,4 @@ cat ${TXT} | xsel --clipboard --input
 # 一時ファイルを削除
 rm -rf ${TXT}
 # ChatGPTのWebページにアクセスする
-xdg-open https://chatgpt.com/
+xdg-open https://chatgpt.com/?model=gpt-4o
