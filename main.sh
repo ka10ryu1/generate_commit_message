@@ -9,19 +9,23 @@ MODEL="${1:-$DEFAULT_MODEL}"
 
 # 必要なコマンドのチェック (xsel, git)
 if ! command -v xsel &>/dev/null; then
-    echo "Error: xselがインストールされていません。インストールしてください。"
+    echo "Error: xselがインストールされていません。"
+    echo "Ubuntu/Debian: sudo apt install xsel"
     exit 1
-fi
-
-if ! command -v git &>/dev/null; then
-    echo "Error: gitがインストールされていません。インストールしてください。"
+elif ! command -v xdg-open &>/dev/null; then
+    echo "Error: xdg-openがインストールされていません。"
+    echo "Ubuntu/Debian: sudo apt install xdg-utils wslu"
     exit 2
+elif ! command -v git &>/dev/null; then
+    echo "Error: gitがインストールされていません。"
+    echo "Ubuntu/Debian: sudo apt install git"
+    exit 3
 fi
 
 # ステージされた変更がない場合のチェック
 if [ -z "$(git diff --name-only --cached)" ]; then
     echo "Error: ステージされた変更がありません。変更を追加してください。"
-    exit 3
+    exit 4
 fi
 
 # プロンプトとGit差分を一時ファイルに書き込む
