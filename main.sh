@@ -6,13 +6,13 @@ copy_clipboard() {
 
     # 64 KiB 超は clip.exe に丸投げ
     if (( sz > 64000 )) && command -v clip.exe &>/dev/null; then
-        clip.exe <"$file_path"
+        iconv -f utf-8 -t cp932 < "$file_path" | clip.exe
         return $?
     fi
 
     # Windows 直通を優先
     if command -v clip.exe &>/dev/null; then
-        clip.exe <"$file_path"
+        iconv -f utf-8 -t cp932 < "$file_path" | clip.exe
         return $?
     fi
 
