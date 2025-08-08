@@ -75,6 +75,6 @@ echo "コミットメッセージのプロンプトをクリップボードに�
 rm -f "${TXT}"
 
 # ChatGPTのWebページを開く
-URL="https://chatgpt.com/g/g-681abf2258a08191825991d6b65fc97a-komitutometusesizuo-cheng-ai?model=gpt-4o"
+URL="https://chatgpt.com/g/g-681abf2258a08191825991d6b65fc97a-komitutometusesizuo-cheng-ai?model=${MODEL}"
 echo "ChatGPTを開きます: ${URL}"
 xdg-open "${URL}"
