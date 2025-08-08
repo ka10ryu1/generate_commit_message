@@ -36,7 +36,7 @@ copy_clipboard() {
 TXT=".gen_commit_mgs_buf.txt"
 
 # デフォルトモデル名を設定し、引数で上書き可能に
-DEFAULT_MODEL="gpt-4o"
+DEFAULT_MODEL="gpt-5"
 MODEL="${1:-$DEFAULT_MODEL}"
 
 # 必要なコマンドのチェック (xsel, git)

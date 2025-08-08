@@ -87,7 +87,7 @@ fi
 
 BASE_BRANCH="$1"
 CURRENT_BRANCH="${2:-$(git rev-parse --abbrev-ref HEAD)}"
-DEFAULT_MODEL="gpt-4o"
+DEFAULT_MODEL="gpt-5"
 MODEL="${3:-$DEFAULT_MODEL}"
 
 ###############################################################################
