@@ -6,13 +6,13 @@ copy_clipboard() {
 
     # 64 KiB 超は clip.exe に丸投げ
     if (( sz > 64000 )) && command -v clip.exe &>/dev/null; then
-        iconv -f utf-8 -t cp932 < "$file_path" | clip.exe
+        iconv -c -f utf-8 -t cp932 < "$file_path" | clip.exe
         return $?
     fi
 
     # Windows 直通を優先
     if command -v clip.exe &>/dev/null; then
-        iconv -f utf-8 -t cp932 < "$file_path" | clip.exe
+        iconv -c -f utf-8 -t cp932 < "$file_path" | clip.exe
         return $?
     fi
 
@@ -77,4 +77,11 @@ rm -f "${TXT}"
 # ChatGPTのWebページを開く
 URL="https://chatgpt.com/g/g-681abf2258a08191825991d6b65fc97a-komitutometusesizuo-cheng-ai?model=${MODEL}"
 echo "ChatGPTを開きます: ${URL}"
-xdg-open "${URL}"
+
+if command -v wslview &>/dev/null; then
+    wslview "${URL}"
+elif command -v explorer.exe &>/dev/null; then
+    explorer.exe "${URL}"
+else
+    xdg-open "${URL}" 2>/dev/null || echo "ブラウザを自動で開けませんでした。URLを手動で開いてください。"
+fi
