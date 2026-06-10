@@ -61,7 +61,7 @@ if [ -z "$(git diff --name-only --cached)" ]; then
 fi
 
 # プロンプトとGit差分を一時ファイルに書き込む
-git diff --cached -U10 --ignore-blank-lines --minimal --no-prefix >"${TXT}"
+git diff --cached -U50 --ignore-blank-lines --minimal --no-prefix >"${TXT}"
 
 # クリップボードにコピー
 if ! copy_clipboard "${TXT}"; then
